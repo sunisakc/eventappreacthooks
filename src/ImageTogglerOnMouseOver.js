@@ -1,24 +1,19 @@
 import React, {useRef} from "react";
 
-const ImageTogglerOnMouseOver = ({ primaryImg, secondaryImg}) => {
-    const imgeRef = useRef(null);
+const ImageTogglerOnMouseOver = ({ primaryImg, secondaryImg }) => {
+
+    const imageRef = useRef(null);
 
     return (
         <img onMouseOver={() => {
-            imgeRef.current.src = secondaryImg;
-        }} onMouseOut= {() => {
-            imgeRef.current.src = primaryImg;
+            imageRef.current.src = secondaryImg;
+        }} onMouseOut={() => {
+            imageRef.current.src = primaryImg;
         }}
             src={primaryImg}
-            alt="" ref={imgeRef}
-            />
+            alt="" ref={imageRef}
+        />
     );
 };
-
-
-
-
-
-
 
 export default ImageTogglerOnMouseOver;

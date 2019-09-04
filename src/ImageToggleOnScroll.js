@@ -1,6 +1,6 @@
 import React, {useRef, useEffect, useState} from "react";
 
-const ImageTogglerOnScroll = ({ primaryImg, secondaryImg}) =>{
+const ImageTogglerOnScroll = ({ primaryImg, secondaryImg }) => {
 
     const imageRef = useRef(null);
     const [isLoading,setIsLoading] = useState(true);
@@ -9,38 +9,33 @@ const ImageTogglerOnScroll = ({ primaryImg, secondaryImg}) =>{
         window.addEventListener("scroll", scrollHandler);
         setInView(isInView());
         setIsLoading(false);
-        return (() => {
+        return ( () => {
             window.removeEventListener("scroll", scrollHandler);
         });
+    },[isLoading]);
 
-        }, [isLoading]);
-        const [inView , setInView] = useState(false);
+    const [inView,setInView] = useState(false);
 
-        const isInView = () => {
-            if(imageRef.current) {
-                const rect = imageRef.current.getBoundngClientRect();
-                return rect.top >= 0 && rect.botton <= window.innerHeight;
-            }
-            return false;
-        };
-        const scrollHandler = () => {
-            setInView(() => {
-                return isInView();
-            });
-        };
+    const isInView = () => {
+        if (imageRef.current) {
+            const rect = imageRef.current.getBoundingClientRect();
+            return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        }
+        return false;
+    };
 
-        return isLoading ? null : (
-            <img
+    const scrollHandler = () => {
+        setInView(() => {
+            return isInView();
+        });
+    };
+
+    return isLoading ? null : (
+        <img
             src={inView ? secondaryImg : primaryImg}
             alt="" ref={imageRef} width="200" height="200"
-            />
-        );
-    
-
+        />
+    );
 };
-
-
-
-
 
 export default ImageTogglerOnScroll;
