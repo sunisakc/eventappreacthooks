@@ -88,15 +88,15 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/ImageChangeOnMouseOver.js":
+/*!*****************************************!*\
+  !*** ./pages/ImageChangeOnMouseOver.js ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -104,83 +104,94 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\User\\Desktop\\Reactgit\\eventappreacthooks\\pages\\index.js";
+/* harmony import */ var _src_ImageTogglerOnMouseOver__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/ImageTogglerOnMouseOver */ "./src/ImageTogglerOnMouseOver.js");
+var _jsxFileName = "C:\\Users\\User\\Desktop\\Reactgit\\eventappreacthooks\\pages\\ImageChangeOnMouseOver.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const InputElement = () => {
-  const {
-    0: inputText,
-    1: setInputText
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
-  const {
-    0: historyList,
-    1: setHistoryList
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+
+const ImageChangeOnMouseOver = () => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 7
     },
     __self: undefined
-  }, __jsx("input", {
-    onChange: e => {
-      setInputText(e.target.value);
-      setHistoryList([...historyList, e.target.value]);
-    },
-    placeholder: "Enter Some Text",
+  }, __jsx(_src_ImageTogglerOnMouseOver__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    primaryImg: "/static/speakers/bw/Speaker-187.jpg",
+    secondaryImg: "/static/speakers/Speaker-187.jpg",
+    alt: "",
     __source: {
       fileName: _jsxFileName,
       lineNumber: 8
     },
     __self: undefined
-  }), __jsx("br", {
+  }), "\xA0\xA0\xA0", __jsx(_src_ImageTogglerOnMouseOver__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    primaryImg: "/static/speakers/bw/Speaker-1124.jpg",
+    secondaryImg: "/static/speakers/Speaker-1124.jpg",
+    alt: "",
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 13
+      lineNumber: 12
     },
     __self: undefined
-  }), inputText, __jsx("hr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: undefined
-  }), __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: undefined
-  }), __jsx("ul", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }, historyList.map(rec => {
-    return __jsx("div", {
-      __source: {
-        fileName: _jsxFileName,
-        lineNumber: 18
-      },
-      __self: undefined
-    }, rec);
-  })));
+  }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (InputElement);
+/* harmony default export */ __webpack_exports__["default"] = (ImageTogglerOnMouseOver);
 
 /***/ }),
 
-/***/ 5:
-/*!******************************!*\
-  !*** multi ./pages/index.js ***!
-  \******************************/
+/***/ "./src/ImageTogglerOnMouseOver.js":
+/*!****************************************!*\
+  !*** ./src/ImageTogglerOnMouseOver.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "C:\\Users\\User\\Desktop\\Reactgit\\eventappreacthooks\\src\\ImageTogglerOnMouseOver.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const ImageChangeOnMouseOver = ({
+  primaryImg,
+  secondaryImg
+}) => {
+  const imageRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  return __jsx("img", {
+    onMouseOver: () => {
+      imageRef.current.src = secondaryImg;
+    },
+    onMouseOut: () => {
+      imageRef.current.src = primaryImg;
+    },
+    src: primaryImg,
+    alt: "",
+    ref: imageRef,
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 8
+    },
+    __self: undefined
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ImageChangeOnMouseOver);
+
+/***/ }),
+
+/***/ 3:
+/*!***********************************************!*\
+  !*** multi ./pages/ImageChangeOnMouseOver.js ***!
+  \***********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\User\Desktop\Reactgit\eventappreacthooks\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\User\Desktop\Reactgit\eventappreacthooks\pages\ImageChangeOnMouseOver.js */"./pages/ImageChangeOnMouseOver.js");
 
 
 /***/ }),
@@ -197,4 +208,4 @@ module.exports = require("react");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=ImageChangeOnMouseOver.js.map
