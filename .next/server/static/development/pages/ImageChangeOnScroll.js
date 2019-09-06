@@ -88,15 +88,15 @@ module.exports =
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 6);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./pages/index.js":
-/*!************************!*\
-  !*** ./pages/index.js ***!
-  \************************/
+/***/ "./pages/ImageChangeOnScroll.js":
+/*!**************************************!*\
+  !*** ./pages/ImageChangeOnScroll.js ***!
+  \**************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -104,83 +104,122 @@ module.exports =
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-var _jsxFileName = "C:\\Users\\User\\Desktop\\Reactgit\\eventappreacthooks\\pages\\index.js";
+/* harmony import */ var _src_ImageToggleOnScroll__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../src/ImageToggleOnScroll */ "./src/ImageToggleOnScroll.js");
+var _jsxFileName = "C:\\Users\\User\\Desktop\\Reactgit\\eventappreacthooks\\pages\\ImageChangeOnScroll.js";
 var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
 
 
-const InputElement = () => {
-  const {
-    0: inputText,
-    1: setInputText
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("");
-  const {
-    0: historyList,
-    1: setHistoryList
-  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]);
+
+const ImageChangeOnScroll = () => {
   return __jsx("div", {
     __source: {
       fileName: _jsxFileName,
-      lineNumber: 8
+      lineNumber: 7
     },
     __self: undefined
-  }, __jsx("input", {
-    onChange: e => {
-      setInputText(e.target.value);
-      setHistoryList([...historyList, e.target.value]);
-    },
-    placeholder: "Enter Some Text",
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 8
-    },
-    __self: undefined
-  }), __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 13
-    },
-    __self: undefined
-  }), inputText, __jsx("hr", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: undefined
-  }), __jsx("br", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 15
-    },
-    __self: undefined
-  }), __jsx("ul", {
-    __source: {
-      fileName: _jsxFileName,
-      lineNumber: 16
-    },
-    __self: undefined
-  }, historyList.map(rec => {
+  }, [1124, 187, 823, 1269, 1530].map(speakerId => {
     return __jsx("div", {
+      key: speakerId,
       __source: {
         fileName: _jsxFileName,
-        lineNumber: 18
+        lineNumber: 10
       },
       __self: undefined
-    }, rec);
-  })));
+    }, __jsx(_src_ImageToggleOnScroll__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      primaryImg: `/static/speakers/bw/Speaker-${speakerId}.jpg`,
+      secondaryImg: `/static/speakers/Speaker-${speakerId}.jpg`,
+      alt: "",
+      __source: {
+        fileName: _jsxFileName,
+        lineNumber: 11
+      },
+      __self: undefined
+    }));
+  }));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (InputElement);
+/* harmony default export */ __webpack_exports__["default"] = (ImageChangeOnScroll);
 
 /***/ }),
 
-/***/ 5:
-/*!******************************!*\
-  !*** multi ./pages/index.js ***!
-  \******************************/
+/***/ "./src/ImageToggleOnScroll.js":
+/*!************************************!*\
+  !*** ./src/ImageToggleOnScroll.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+var _jsxFileName = "C:\\Users\\User\\Desktop\\Reactgit\\eventappreacthooks\\src\\ImageToggleOnScroll.js";
+var __jsx = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement;
+
+
+const ImageTogglerOnScroll = ({
+  primaryImg,
+  secondaryImg
+}) => {
+  const imageRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(null);
+  const {
+    0: isLoading,
+    1: setIsLoading
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(() => {
+    window.addEventListener("scroll", scrollHandler);
+    setInView(isInView());
+    setIsLoading(false);
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  }, [isLoading]);
+  const {
+    0: inView,
+    1: setInView
+  } = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false);
+
+  const isInView = () => {
+    if (imageRef.current) {
+      const rect = imageRef.current.getBoundingClientRect();
+      return rect.top >= 0 && rect.bottom <= window.innerHeight;
+    }
+
+    return false;
+  };
+
+  const scrollHandler = () => {
+    setInView(() => {
+      return isInView();
+    });
+  };
+
+  return isLoading ? null : __jsx("img", {
+    src: inView ? secondaryImg : primaryImg,
+    alt: "",
+    ref: imageRef,
+    width: "200",
+    height: "200",
+    __source: {
+      fileName: _jsxFileName,
+      lineNumber: 34
+    },
+    __self: undefined
+  });
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ImageTogglerOnScroll);
+
+/***/ }),
+
+/***/ 6:
+/*!********************************************!*\
+  !*** multi ./pages/ImageChangeOnScroll.js ***!
+  \********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\User\Desktop\Reactgit\eventappreacthooks\pages\index.js */"./pages/index.js");
+module.exports = __webpack_require__(/*! C:\Users\User\Desktop\Reactgit\eventappreacthooks\pages\ImageChangeOnScroll.js */"./pages/ImageChangeOnScroll.js");
 
 
 /***/ }),
@@ -197,4 +236,4 @@ module.exports = require("react");
 /***/ })
 
 /******/ });
-//# sourceMappingURL=index.js.map
+//# sourceMappingURL=ImageChangeOnScroll.js.map
